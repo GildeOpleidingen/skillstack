@@ -1,0 +1,94 @@
+:root {
+        --menu-width: 280px;
+        --info-width: 320px;
+        --gap: 20px;
+        --bg: #f6f7fb;
+        --panel: #ffffff;
+        --border: #e6e8ef;
+        --text: #0f172a;
+        --muted: #64748b;
+}
+
+* { box-sizing: border-box; }
+
+body {
+        margin: 0;
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+        color: var(--text);
+        background: var(--bg);
+}
+
+.layout {
+        min-height: 100vh;
+        display: grid;
+        grid-template-columns: 1fr; /* mobile default */
+        gap: var(--gap);
+        padding: 20px;
+}
+
+.left-menu,
+.right-info,
+.content {
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+}
+
+/* Left menu styling */
+.left-menu {
+        padding: 16px;
+}
+.left-menu nav {
+        display: grid;
+        gap: 8px;
+}
+.left-menu a {
+        display: block;
+        padding: 10px 12px;
+        border-radius: 10px;
+        color: var(--text);
+        text-decoration: none;
+        background: #f8fafc;
+        border: 1px solid #eef2f7;
+}
+.left-menu a:hover {
+        background: #eef2ff;
+}
+
+/* Main content */
+.content {
+        padding: 20px;
+}
+
+/* Right info */
+.right-info {
+        padding: 16px;
+}
+.info-card h2 {
+        margin: 0 0 8px;
+}
+.info-card p {
+        margin: 0;
+        color: var(--muted);
+}
+
+/* Desktop: 3 columns + sticky sidebars */
+@media (min-width: 1024px) {
+        .layout {
+                grid-template-columns: var(--menu-width) 1fr var(--info-width);
+                align-items: start;
+        }
+
+        .left-menu,
+        .right-info {
+                position: sticky;
+                top: 20px; /* adjust based on header height */
+                max-height: calc(100vh - 40px);
+                overflow: auto;
+        }
+
+        /* Make the center content feel “nice” and readable */
+        .content {
+                padding: 24px;
+        }
+}

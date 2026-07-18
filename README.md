@@ -1,2 +1,9 @@
 # skillstack
-Comenius 
+
+> Comenius 
+
+## Development
+
+> I use for indenting 8 spaces
+
+> Plain css!
