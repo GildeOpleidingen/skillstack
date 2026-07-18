@@ -23,17 +23,19 @@ class CodeContent extends HTMLElement {
 
         render(route) {
 
-                const pages = {
-                        journey: {title: 'Journey', body: 'Your journey starts here...'},
-                        practice: {title: 'Practice', body: 'Practice questions and drills...'},
-                        projects: {title: 'Projects', body: 'Build real projects step-by-step...'},
-                }
-                const page = pages[route] ?? { title: 'Not found', body: 'This page does not exist.'};
+                this.innetHTML = ``;
 
-                this.innerHTML = `
-                       <h1>${page.title}</h1>
-                       <p>${page.body}</p>
-                `;
+                const map = {
+                        journey: 'page-journey',
+                        practice: 'page-practice',
+                        projects: 'page-projects',
+                }
+
+                const tag = map[route] || 'page-not-found';
+
+                const el = document.createElement(tag);
+                this.replaceChildren(el);
+
         }
 }
 
