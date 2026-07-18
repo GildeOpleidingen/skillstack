@@ -1,29 +1,39 @@
 class CodeContent extends HTMLElement {
         connectedCallback() {
-                if (this.childNodes.length) return;
+                //if (this.childNodes.length) return;
+
+                // Initial render
+                this.render(this.currentRoute());
+
+                // Render on navigation
+                window.addEventListener('route-change', (e) =>{
+                        this.render(e.detail);
+                })
+
+                // Back/forward buttons
+                window.addEventListener('popstate', () => {
+                        this.render(this.currentRoute());
+                });
+        }
+
+        currentRoute() {
+                const path = window.location.pathname;
+                return path.replace('/', '') || 'journey';
+        }
+
+        render(route) {
+
+                const pages = {
+                        journey: {title: 'Journey', body: 'Your journey starts here...'},
+                        practice: {title: 'Practice', body: 'Practice questions and drills...'},
+                        projects: {title: 'Projects', body: 'Build real projects step-by-step...'},
+                }
+                const page = pages[route] ?? { title: 'Not found', body: 'This page does not exist.'};
 
                 this.innerHTML = `
-                        <h1 style="margin: 0 0 10px;">Learn to Code</h1>
-                              <p style="margin: 0; color: var(--muted);">
-                                Start with HTML, then build with CSS, then add JavaScript.
-                              </p>
-                        
-                              <div style="margin-top: 16px;">
-                                <pre style="
-                                  margin: 0;
-                                  padding: 14px;
-                                  border-radius: 12px;
-                                  border: 1px solid var(--border);
-                                  background: rgba(255,255,255,0.03);
-                                  overflow: auto;
-                                "><code>
-                        // Tip: replace this content with your lesson renderer
-                        console.log("Hello, world!");
-                                </code></pre>
-                              </div>
-                
+                       <h1>${page.title}</h1>
+                       <p>${page.body}</p>
                 `;
-
         }
 }
 
