@@ -1,6 +1,5 @@
 class CodeContent extends HTMLElement {
         connectedCallback() {
-                //if (this.childNodes.length) return;
 
                 // Initial render
                 this.render(this.currentRoute());
@@ -16,6 +15,8 @@ class CodeContent extends HTMLElement {
                 });
         }
 
+        // Get current route (without the /)
+        // @TODO enhance in future for more complexity
         currentRoute() {
                 const path = window.location.pathname;
                 return path.replace('/', '') || 'journey';
@@ -23,8 +24,7 @@ class CodeContent extends HTMLElement {
 
         render(route) {
 
-                this.innetHTML = ``;
-
+                // Map with routes (elements..)
                 const map = {
                         journey: 'page-journey',
                         practice: 'page-practice',
