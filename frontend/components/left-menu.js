@@ -5,6 +5,7 @@ class LeftMenu extends HTMLElement {
                 this.innerHTML = `
                         <h1>SkillStack</h1>
                         <nav>
+                                <a href="/dashboard" data-route="dashboard"> <i class="fa-solid fa-gauge"></i> Dashboard </a>
                                 <a href="/journey" data-route="journey"> <i class="fa-duotone fa-solid fa-route"></i> Journey</a>
                                 <a href="/practice" data-route="practice"> <i class="fa-solid fa-brain"></i> Practice </a>
                                 <a href="/projects" data-route="projects"> <i class="fa-brands fa-product-hunt"></i> Projects </a>
@@ -33,7 +34,7 @@ class LeftMenu extends HTMLElement {
 
                         window.dispatchEvent(new CustomEvent('route-change', {detail: route}));
 
-                })
+                });
         }
 }
 

@@ -19,13 +19,14 @@ class CodeContent extends HTMLElement {
         // @TODO enhance in future for more complexity
         currentRoute() {
                 const path = window.location.pathname;
-                return path.replace('/', '') || 'journey';
+                return path.replace('/', '') || 'dashboard';
         }
 
         render(route) {
 
                 // Map with routes (elements..)
                 const map = {
+                        dashboard: 'page-dashboard',
                         journey: 'page-journey',
                         practice: 'page-practice',
                         projects: 'page-projects',
