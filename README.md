@@ -1,6 +1,8 @@
 # skillstack
 
 > Comenius 
+> 
+> Is wel goed idee om eerst een soort vragenlijst in te vullen en dan gepersonaliseerd leren
 
 ## Development
 
