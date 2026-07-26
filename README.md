@@ -15,6 +15,11 @@
 
 > Idea is to use bull as a queue system that will do tasks, so for skillstack it needs to compile code etc..
 
+### Install
+
+- npm i
+- Rename env_example to .env
+- change .env credentials 
 
 Example call
 ```bash

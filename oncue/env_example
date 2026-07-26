@@ -1,0 +1,3 @@
+SMTP_HOST=host
+SMTP_USER=your@mail.com
+SMTP_PASS=your_app_password
