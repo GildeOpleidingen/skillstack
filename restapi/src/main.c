@@ -1,58 +1,70 @@
-// save as: server.c
-#include "microhttpd.h"
+#include <event2/event.h>
+#include <event2/http.h>
+#include <event2/util.h>
+#include <event2/buffer.h>
 #include <string.h>
 #include <stdlib.h>
+#include <stdio.h>
 
-#define PORT 8888
-
-static enum MHD_Result
-answer_to_connection(void *cls, struct MHD_Connection *connection,
-                      const char *url, const char *method,
-                      const char *version, const char *upload_data,
-                      size_t *upload_data_size, void **con_cls)
+static void on_request(struct evhttp_request *req, void *arg)
 {
-  (void)cls; (void)url; (void)method; (void)version;
-  (void)upload_data; (void)con_cls;
+        const char *method = evhttp_request_get_command(req) == EVHTTP_REQ_GET ? "GET" : "OTHER";
+        (void)arg;
 
-  // We only respond once per request body; for GET upload_data_size is 0 anyway.
-  if (*upload_data_size != 0) {
-    *upload_data_size = 0; // tell libmicrohttpd we consumed it
-    return MHD_YES;
-  }
+        struct evkeyvalq *headers_in = evhttp_request_get_input_headers(req);
 
-  const char *page =
-    "Hello from libmicrohttpd!\n";
+        // Simple response
+        struct evbuffer *buf = evbuffer_new();
+        evbuffer_add_printf(buf,
+                        "{ \"ok\": true, \"method\": \"%s\", \"msg\": \"evhttp server running\" }\n",
+                        method);
 
-  int status_code = MHD_HTTP_OK;
-
-  struct MHD_Response *response =
-    MHD_create_response_from_buffer(strlen(page),
-                                      (void*)page,
-                                      MHD_RESPMEM_PERSISTENT);
-  int ret = MHD_queue_response(connection, status_code, response);
-  MHD_destroy_response(response);
-  return ret == MHD_YES ? MHD_YES : MHD_NO;
+        evhttp_add_header(evhttp_request_get_output_headers(req), "Content-Type", "application/json");
+        evhttp_send_reply(req, 200, "OK", buf);
+        evbuffer_free(buf);
 }
 
-int main(void)
+int main(int argc, char **argv) 
 {
-  struct MHD_Daemon *daemon;
+        int port = 8080;
 
-  daemon = MHD_start_daemon(
-      MHD_USE_SELECT_INTERNALLY,
-      PORT,
-      NULL, NULL, // accept/get policy not used here
-      &answer_to_connection, NULL,
-      MHD_OPTION_END);
+        if (argc >= 2) port = atoi(argv[1]);
 
-  if (!daemon) return 1;
+        struct event_base *base = event_base_new();
 
-  // Run forever
-  while (1) pause();
+        if (!base) {
+                perror("event_base_new");
+                return 1;
+        }
 
-  // Not reached, but shown for completeness:
-  MHD_stop_daemon(daemon);
+        struct evhttp *http = evhttp_new(base);
 
-  return 0;
+        if (!http) {
+                perror("evhttp_new");
+                event_base_free(base);
+                return 1;
+        }
+
+        // Generic request handler
+        evhttp_set_gencb(http, on_request, NULL);
+
+        // Bind port on all interfaces
+        if (evhttp_bind_socket(http, "0.0.0.0", port) != 0) 
+        {
+                fprintf(stderr, "Failed to bind port %d\n", port);
+                evhttp_free(http);
+                event_base_free(base);
+                return 1;
+        }
+
+        printf("evhttp listening on port %d\n", port);
+        event_base_dispatch(base);
+
+        evhttp_free(http);
+        event_base_free(base);
+        return 0;
+
+
+
 }
 

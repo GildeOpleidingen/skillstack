@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -Wall -Iinclude
-LIBS = -lmicrohttpd
+LIBS = -levent -levent_core -levent_extra
 
 SRC = src/main.c
 OBJ = $(SRC:.c=.o)

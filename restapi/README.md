@@ -4,9 +4,8 @@
 
 // Dependencies:
 //   microhttpd
+//      --> changed to evhttp (event driven) more scalable
 //   libpq (postgress)
+//      --> will change to mysql
 
 
-sudo pacman -S libmicrohttpd
-
-clang api.c -o server -lmicrohttpd
