@@ -1,0 +1,122 @@
+:root {
+        --menu-width: 280px;
+        --info-width: 320px;
+        --gap: 20px;
+
+        /* App background */
+        --bg: #0b1220;
+
+        /* Accent (teal/blue) */
+        --bg-primary: #0ea5e9;
+        --brand-primary: #22c55e;
+
+        /* Panel gradient */
+        --panel:
+                radial-gradient(circle at 15% 20%,
+                color-mix(in srgb, var(--bg-primary) 22%, transparent) 0,
+                transparent 55%),
+                radial-gradient(circle at 85% 80%,
+                color-mix(in srgb, var(--brand-primary) 16%, transparent) 0,
+                transparent 60%),
+                linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+
+        /* Borders & text */
+        --border: rgba(226, 232, 240, 0.22);
+        --text: #e5e7eb;
+        --muted: #94a3b8;
+
+        /* Link/button specifics */
+        --nav-item-bg: rgba(255,255,255,0.05);
+        --nav-item-border: rgba(226, 232, 240, 0.18);
+        --nav-item-hover-bg: rgba(14, 165, 233, 0.16);
+        --nav-item-hover-border: rgba(14, 165, 233, 0.35);
+}
+
+* { box-sizing: border-box; }
+
+body {
+        color-scheme: dark;
+        margin: 0;
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+        color: var(--text);
+        background: var(--bg);
+}
+
+.layout {
+        min-height: 100vh;
+        display: grid;
+        grid-template-columns: 1fr; /* mobile default */
+        gap: var(--gap);
+        padding: 20px;
+}
+
+.left-menu,
+.right-info,
+.content {
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+}
+
+/* Left menu styling */
+.left-menu {
+        padding: 16px;
+}
+.left-menu nav {
+        display: grid;
+        gap: 8px;
+}
+.left-menu a {
+        display: block;
+        padding: 10px 12px;
+        border-radius: 10px;
+        color: var(--text);
+        text-decoration: none;
+
+        /* Use your dark palette (remove light overrides) */
+        background: var(--nav-item-bg);
+        border: 1px solid var(--nav-item-border);
+}
+.left-menu a:hover {
+        background: var(--nav-item-hover-bg);
+        border-color: var(--nav-item-hover-border);
+}
+
+/* Main content */
+.content {
+        padding: 20px;
+}
+
+/* Right info */
+.right-info {
+        padding: 16px;
+}
+.info-card h2 {
+        margin: 0 0 8px;
+}
+.info-card p {
+        margin: 0;
+        color: var(--muted);
+}
+
+/* Desktop: 3 columns + sticky sidebars */
+@media (min-width: 1024px) {
+        .layout {
+                grid-template-columns: var(--menu-width) 1fr var(--info-width);
+                align-items: start;
+        }
+
+        .left-menu,
+        .right-info {
+                position: sticky;
+                top: 20px;
+                max-height: calc(100vh - 40px);
+                overflow: auto;
+        }
+
+        .content {
+                padding: 24px;
+        }
+}
+
+

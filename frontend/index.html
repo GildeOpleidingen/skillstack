@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>SkillStack</title>
+
+        <!-- Icons (optional). Remove if you don't want Font Awesome. -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="layout">
+        <aside class="left-menu">
+                <left-menu></left-menu>
+        </aside>
+
+        <main class="content">
+                <code-content></code-content>
+        </main>
+
+        <aside class="right-info">
+                <right-info></right-info>
+        </aside>
+</div>
+
+<script type="module" src="./components/left-menu.js"></script>
+<script type="module" src="./components/code-content.js"></script>
+<script type="module" src="./components/right-info.js"></script>
+<script type="module" src="./components/pages/page-dashboard.js"></script>
+<script type="module" src="./components/pages/page-journey.js"></script>
+<script type="module" src="./components/pages/page-practice.js"></script>
+
+</body>
+</html>
