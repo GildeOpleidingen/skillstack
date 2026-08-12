@@ -63,8 +63,4 @@ int main(int argc, char **argv)
         evhttp_free(http);
         event_base_free(base);
         return 0;
-
-
-
 }
-
