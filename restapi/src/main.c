@@ -17,7 +17,7 @@ int mysqlTest()
                 exit(1);
         }
 
-        if (mysql_real_connect(con, "localhost", "root", "", NULL, 0, NULL, 0) == NULL) {
+        if (mysql_real_connect(con, "localhost", "rayit", "rayrayray", NULL, 0, NULL, 0) == NULL) {
                 fprintf(stderr, "%s\n", mysql_error(con));
                 mysql_close(con);
                 exit(1);
