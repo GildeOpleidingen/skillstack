@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -Wall -Iinclude -I/usr/local/include
 LDFLAGS = -L/usr/local/lib -Wl,-rpath,/usr/local/lib
-LIBS = -levent_core -levent_extra
+LIBS = -levent_core -levent_extra -lmysqlclient
 
 SRC = src/main.c
 OBJ = src/main.o
