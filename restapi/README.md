@@ -9,3 +9,12 @@
 //      --> will change to mysql
 
 
+## Dependienceis
+
+
+Debian:
+
+```bash
+apt install libevent-dev
+apt install default-libmysqlclient-dev
+```

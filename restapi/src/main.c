@@ -23,7 +23,7 @@ int mysqlTest()
                 exit(1);
         }
 
-        if (mysql_query(con, "CREATE DATABASE testdb")) {
+        if (mysql_query(con, "CREATE DATABASE IF NOT EXISTS testdb;")) {
                 fprintf(stderr, "%s\n", mysql_error(con));
                 mysql_close(con);
                 exit(1);

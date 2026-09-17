@@ -1,0 +1,194 @@
+<!-- ROADMAP TAB -->
+<section id="roadmap" class="tab-content active">
+
+    <div class="roadmap">
+
+        <!-- TWO COLUMN DASHBOARD -->
+        <div class="dashboard-columns">
+
+            <!-- LEFT: ROADMAP -->
+            <section class="roadmap-section">
+
+                <div class="section-heading">
+                    <div>
+                        <h2>🗺️ Your coding journey</h2>
+                        <p>Follow the path. Unlock new skills.</p>
+                    </div>
+
+                    <span class="roadmap-counter">
+                        12 / 28 solved
+                    </span>
+                </div>
+
+                <div class="journey-map">
+
+                    <div class="map-top">
+                        <span>BEGINNER ADVENTURE</span>
+                        <span>42% COMPLETE</span>
+                    </div>
+
+                    <div class="journey-progress">
+                        <div style="width:42%"></div>
+                    </div>
+
+                    <!-- DECORATIVE TERRAIN -->
+                    <div class="terrain terrain-one">✦</div>
+                    <div class="terrain terrain-two">✦</div>
+                    <div class="terrain terrain-three">✦</div>
+                    <div class="terrain terrain-four">✦</div>
+
+                    <!-- SVG ROAD -->
+                    <svg class="road-svg"
+                         viewBox="0 0 700 1100"
+                         preserveAspectRatio="xMidYMid meet"
+                         aria-label="Coding roadmap from beginner to algorithms">
+
+                        <defs>
+                            <linearGradient id="roadGradient"
+                                            x1="0" y1="0"
+                                            x2="0" y2="1">
+                                <stop offset="0%" stop-color="#D6B88C"/>
+                                <stop offset="100%" stop-color="#B18C61"/>
+                            </linearGradient>
+                        </defs>
+
+                        <!-- Shadow / outline -->
+                        <path class="road-outline"
+                              d="M350 1020
+                                 C130 950 120 820 350 730
+                                 C580 640 580 510 350 430
+                                 C120 350 120 220 350 100"/>
+
+                        <!-- Main road -->
+                        <path class="road-path"
+                              d="M350 1020
+                                 C130 950 120 820 350 730
+                                 C580 640 580 510 350 430
+                                 C120 350 120 220 350 100"/>
+
+                        <!-- Center road marking -->
+                        <path class="road-dash"
+                              d="M350 1020
+                                 C130 950 120 820 350 730
+                                 C580 640 580 510 350 430
+                                 C120 350 120 220 350 100"/>
+
+                        <!-- Checkpoint labels -->
+                        <g class="map-label" transform="translate(370 970)">
+                            <rect width="260" height="58" rx="14"/>
+                            <text x="18" y="22" class="label-small">STARTING POINT</text>
+                            <text x="18" y="43" class="label-title">Programming Basics</text>
+                        </g>
+
+                        <g class="map-label current-label"
+                           transform="translate(28 680)">
+                            <rect width="250" height="65" rx="14"/>
+                            <text x="18" y="22" class="label-small">CURRENT QUEST</text>
+                            <text x="18" y="43" class="label-title">Arrays & Strings</text>
+                            <text x="18" y="57" class="label-small">3 / 6 exercises solved</text>
+                        </g>
+
+                        <g class="map-label"
+                           transform="translate(370 380)">
+                            <rect width="260" height="58" rx="14"/>
+                            <text x="18" y="22" class="label-small">NEXT DESTINATION</text>
+                            <text x="18" y="43" class="label-title">Functions & Recursion</text>
+                        </g>
+
+                        <g class="map-label"
+                           transform="translate(28 80)">
+                            <rect width="250" height="58" rx="14"/>
+                            <text x="18" y="22" class="label-small">FINAL SUMMIT</text>
+                            <text x="18" y="43" class="label-title">Algorithms</text>
+                        </g>
+
+                    </svg>
+
+                    <!-- CHECKPOINTS -->
+                    <button class="checkpoint checkpoint-start"
+                            data-milestone="basics"
+                            aria-label="Open Programming Basics">
+                        <span>✓</span>
+                    </button>
+
+                    <button class="checkpoint checkpoint-current"
+                            data-milestone="arrays"
+                            aria-label="Open Arrays and Strings">
+                        <span>★</span>
+                    </button>
+
+                    <button class="checkpoint checkpoint-locked"
+                            data-milestone="functions"
+                            aria-label="Functions and Recursion locked"
+                            disabled>
+                        <span>🔒</span>
+                    </button>
+
+                    <button class="checkpoint checkpoint-final"
+                            data-milestone="algorithms"
+                            aria-label="Algorithms locked"
+                            disabled>
+                        <span>🏆</span>
+                    </button>
+
+                    <!-- NEXT MISSION -->
+                    <div class="next-mission">
+
+                        <div class="mission-icon">🎯</div>
+
+                        <div class="mission-info">
+                            <span>NEXT MISSION</span>
+                            <strong>Count Occurrences</strong>
+                            <small>Arrays & Strings · Medium · 100 XP</small>
+                        </div>
+
+                        <button class="mission-button"
+                                data-milestone="arrays">
+                            Start →
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+        </div>
+
+        <!-- MILESTONE DETAIL MODAL -->
+        <div class="milestone-modal" id="milestoneModal">
+
+            <div class="milestone-modal-card">
+
+                <button class="modal-close" id="closeMilestone">
+                    ×
+                </button>
+
+                <div class="modal-icon">🚀</div>
+
+                <div class="eyebrow" id="modalEyebrow">
+                    MILESTONE 02
+                </div>
+
+                <h2 id="modalTitle">Arrays & Strings</h2>
+
+                <p id="modalDescription">
+                    Learn how to work with collections of data.
+                </p>
+
+                <div class="modal-stats">
+                    <span id="modalProgress">3 / 6 solved</span>
+                    <span id="modalXP">+570 XP available</span>
+                </div>
+
+                <div class="modal-exercises" id="modalExercises"></div>
+
+                <button class="mission-button modal-main-button"
+                        id="modalContinue">
+                    Continue learning →
+                </button>
+
+            </div>
+
+        </div>
+    </div>
+</section>
