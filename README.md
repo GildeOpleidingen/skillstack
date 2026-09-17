@@ -10,6 +10,13 @@
 
 > Plain css!
 
+## Frontend
+
+Using plain css and js.
+In sections are the sections of the page.
+In assets I put the css
+...
+
 
 ## Oncue -  BullMQ implementation
 
