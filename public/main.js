@@ -126,7 +126,7 @@ $(document).ready(function() {
     /*
      * ROADMAP DATA
      *
-     * Later replace this with PHP/MySQL data.
+     * TODO Later replace this with MySQL data.
      */
 
     const milestones = {
@@ -204,7 +204,6 @@ $(document).ready(function() {
     /*
      * OPEN MILESTONE MODAL
      */
-
     function openMilestone(milestoneId) {
 
         const milestone = milestones[milestoneId];

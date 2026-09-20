@@ -7,31 +7,7 @@
 #include <stdio.h>
 #include <mysql/mysql.h>
 
-// Test mysql
-int mysqlTest()
-{
-        MYSQL *con = mysql_init(NULL);
-
-        if (con == NULL) {
-                fprintf(stderr, "%s\n", mysql_error(con));
-                exit(1);
-        }
-
-        if (mysql_real_connect(con, "localhost", "rayit", "rayrayray", NULL, 0, NULL, 0) == NULL) {
-                fprintf(stderr, "%s\n", mysql_error(con));
-                mysql_close(con);
-                exit(1);
-        }
-
-        if (mysql_query(con, "CREATE DATABASE IF NOT EXISTS testdb;")) {
-                fprintf(stderr, "%s\n", mysql_error(con));
-                mysql_close(con);
-                exit(1);
-        }
-
-        mysql_close(con);
-        return 0;
-}
+#include "users.h"
 
 // Handle requests
 static void on_request(struct evhttp_request *req, void *arg)
@@ -66,7 +42,7 @@ static void on_request(struct evhttp_request *req, void *arg)
 int main(int argc, char **argv) 
 {
         // test Mysql
-        mysqlTest();
+        testQuery();
 
         int port = 8080;
 
