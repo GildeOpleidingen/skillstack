@@ -5,7 +5,6 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include <mysql/mysql.h>
 
 #include "users.h"
 
@@ -26,7 +25,7 @@ static void on_request(struct evhttp_request *req, void *arg)
         const char *path = evhttp_uri_get_path(decoded);
         printf("Path: %s", path);        
 
-        struct evkeyvalq *headers_in = evhttp_request_get_input_headers(req);
+        // struct evkeyvalq *headers_in = evhttp_request_get_input_headers(req);
 
         // Simple response
         struct evbuffer *buf = evbuffer_new();
