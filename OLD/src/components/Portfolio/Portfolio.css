@@ -1,0 +1,4 @@
+<!-- Tiny style helpers for the heat bar (Tailwind + inline bg via JS) -->
+
+/* We’ll set the inner bar color via CSS variables on each cell */
+td .level-bar { background: var(--lvl, #e5e7eb); }

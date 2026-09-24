@@ -1,0 +1,62 @@
+server {
+    if ($host = codefolio.gildedevops.it) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+    listen 80;
+    server_name codefolio.gildedevops.it;
+    return 301 https://$host$request_uri;
+}
+
+server {
+    listen 443 ssl;
+    server_name codefolio.gildedevops.it;
+    ssl_certificate /etc/letsencrypt/live/rayit.gildedevops.it/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/rayit.gildedevops.it/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf;
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+
+    root /home/rayit/rateit/public;
+
+    # 🚨 Serve static assets first
+    location ~* \.(css|js|png|jpg|jpeg|gif|ico|svg|html|txt)$ {
+        try_files $uri =404;
+    }
+    
+    # Handle root /
+    location / {
+      try_files $uri /index.html;
+    }
+
+
+    location /auth/github/callback {
+      include fastcgi_params;
+      fastcgi_pass 127.0.0.1:9000;
+
+      fastcgi_param SCRIPT_FILENAME /home/rayit/rateit/cgi-bin/api.cgi;
+    }
+
+
+     location /login/github {
+       include fastcgi_params;
+       fastcgi_pass 127.0.0.1:9000;
+
+       fastcgi_param SCRIPT_FILENAME /home/rayit/rateit/cgi-bin/api.cgi;
+     }
+
+    
+    # Handle API /api/
+    location /api/ {
+	include fastcgi_params;
+    	fastcgi_pass 127.0.0.1:9000;
+
+    	fastcgi_param SCRIPT_FILENAME /home/rayit/rateit/cgi-bin/api.cgi;
+    }
+
+    location = /favicon.ico {
+        access_log off;
+	return 204;
+    }
+
+}
+
