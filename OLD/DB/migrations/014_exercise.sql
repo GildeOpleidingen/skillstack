@@ -1,1 +1,0 @@
-ALTER TABLE exercises ADD COLUMN is_active INTEGER DEFAULT 0;
