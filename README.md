@@ -35,3 +35,8 @@ AUTH_URL=http://localhost:3000
 npx playwright install
 ```
 
+Run tests with playwright:
+
+```bash
+npm run test:e2e
+```
