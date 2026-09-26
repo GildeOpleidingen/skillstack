@@ -1,0 +1,1 @@
+ALTER TABLE exercise_categories ADD COLUMN is_active BOOLEAN DEFAULT 1;
