@@ -1,0 +1,7 @@
+# .editorconfig
+root = true
+
+[*]
+indent_style = space
+indent_size = 8
+tab_width = 8
