@@ -1,4 +1,4 @@
-# Copy to .env.local and fill the values
+# Copy to .env.local or .env and fill the values
 
 # Used by Auth.js v5
 AUTH_SECRET=21c8409eb12f7c2e0d74fe8a61b8ec362d5926c40a758ef2043e5f1dcb9cf409
