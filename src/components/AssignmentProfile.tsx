@@ -1,9 +1,5 @@
 // TODO AssignmentProfile
 
-
-export default function AssignmentProfile()
-{
-	return (
-		<div>AssignmentProfile</div>
-	)
+export default function AssignmentProfile() {
+        return <div>AssignmentProfile</div>;
 }
